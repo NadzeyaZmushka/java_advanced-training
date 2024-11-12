@@ -1,6 +1,9 @@
 package com.epam.jmp.dto;
 
 import java.util.Objects;
+import java.util.UUID;
+
+import static com.epam.jmp.dto.ApplicationConstants.DEFAULT_BALANCE;
 
 public class DebitBankCard extends BankCard {
     private double balance;
@@ -8,6 +11,11 @@ public class DebitBankCard extends BankCard {
     public DebitBankCard(String number, User user, double balance) {
         super(number, user);
         this.balance = balance;
+    }
+
+    public DebitBankCard(User user) {
+        super(UUID.randomUUID().toString(), user);
+        this.balance = DEFAULT_BALANCE;
     }
 
     public double getBalance() {

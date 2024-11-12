@@ -1,8 +1,16 @@
 package com.epam.jmp;
 
+import com.epam.jmp.bank.Bank;
+import com.epam.jmp.bank.impl.BankImpl;
+import com.epam.jmp.dto.BankCard;
+import com.epam.jmp.dto.BankCardType;
+import com.epam.jmp.dto.DebitBankCard;
+import com.epam.jmp.dto.User;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.time.LocalDate;
 
 /**
  * Unit test for simple App.
@@ -31,8 +39,10 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testCreateBankCard()
     {
-        assertTrue( true );
+        Bank bank = new BankImpl();
+        BankCard card = bank.createBankCard(new User("name", "surname", LocalDate.now()), BankCardType.DEBIT);
+        assertTrue(card instanceof DebitBankCard);
     }
 }
