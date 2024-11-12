@@ -1,6 +1,9 @@
 package com.epam.jmp.dto;
 
 import java.util.Objects;
+import java.util.UUID;
+
+import static com.epam.jmp.dto.ApplicationConstants.DEFAULT_LIMIT;
 
 public class CreditBankCard extends BankCard {
     private double creditLimit;
@@ -8,6 +11,11 @@ public class CreditBankCard extends BankCard {
     public CreditBankCard(String number, User user, double creditLimit) {
         super(number, user);
         this.creditLimit = creditLimit;
+    }
+
+    public CreditBankCard(User user) {
+        super(UUID.randomUUID().toString(), user);
+        this.creditLimit = DEFAULT_LIMIT;
     }
 
     public double getCreditLimit() {
